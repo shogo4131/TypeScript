@@ -53,7 +53,7 @@ let a;
 null === undefined   // false
 null  == undefined   // true
 ```
-詳しい内容は書かないが。等価演算子を使用した場合nullとundefinedが等しい判定になってしまうのでJavaScript(TypeScript)では厳密等価演算子のみ使用した方がいい。
+詳しい内容は記載ないが、等価演算子を使用した場合nullとundefinedが等しい判定になってしまうのでJavaScript(TypeScript)では厳密等価演算子のみ使用した方がいい。
 
 
 
