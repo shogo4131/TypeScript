@@ -96,4 +96,35 @@ export const Input = (className: string, props: Props) => (
 )
 ```
 
+### Extract
 
+第一引数と、第二引数で指定した物で互換性のある型を抽出する。
+
+```
+type Test = Extract<string | number, string>
+
+// Testはstring型になる
+```
+
+　stringリテラルタイプやnumberリテラルタイプでもstring、numberと互換性があるので使用できる。
+
+```
+type Test = Extract<'test' | number, string>
+
+// Testは'test'(string literal typesになる)
+
+type Test = Extract<string | 100, number>
+
+// Testは100(number literal typesになる)
+
+```
+
+互換性のない値を設定するとnever型になる。
+
+```
+type Test = Extract<string | 100, boolean>
+
+// Testはnever型になる
+```
+
+### Exclude
