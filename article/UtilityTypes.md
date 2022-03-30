@@ -99,6 +99,8 @@ export const Input = (className: string, props: Props) => (
 ### Extract
 
 第一引数と、第二引数で指定した物で互換性のある型を抽出する。
+これUnion型で必要なものだけ抽出できるから神じゃね？？
+ReduxのActionの型被ったときに使えそう。
 
 ```
 type Test = Extract<string | number, string>
