@@ -81,32 +81,19 @@ const userName: Pick<User, 'name'> = {
 ### Omit
 
 不要な型を除外する。
+ReactではComponentPropsと一緒に使用されることが多い。
 
 ```
-type Props = React.ComponentProps<'input'> // <- here
+classNameを除外してsytleをオーバーライドできる様にする。
 
-export const Input = ({ value, onChange, onBlur, onFocus }: Props) => (
-  <input
-    value={value}
-    onChange={onChange}
-    onBlur={onBlur}
-    onFocus={onFocus}
-    className={styles.input}
-   />
-)
-```
-
-これではコンポーネントのメンテナンス性が悪い。
-
-
-```
-classNameを除外してPropsの値として必要な形にする。
 type Props = Omit<React.ComponentProps<'input'>, 'className'>
 
-export const Input = (props: Props) => (
+export const Input = (className: string, props: Props) => (
   <input
     {...props} // <- className は含まれない（型エラーで事前に弾かれる）
-    className={styles.input} // ここはオーバーライドされる
+    className={clsx(styles.input, className)} // clsxなどでデフォルトのstyleを上書きできる
   />
 )
 ```
+
+
