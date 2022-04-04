@@ -134,11 +134,11 @@ type Test = Extract<string | 100, boolean>
 Extractの逆。第一引数と第二引数が合致しないものを返す。
 
 ```
-union型で不要な物を除いた型を作成できたりする
+// union型で不要な物を除いた型を作成できたりする
 
 type Size = 'small' | 'normal' | 'large' | 'medium'
 
-第二引数をtypoすると除外されないので注意が必要。
+// 第二引数をtypoすると除外されないので注意が必要。
 type BoxSize = Exclude<Size, 'small'>
 
 ```
