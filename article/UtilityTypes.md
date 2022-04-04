@@ -99,8 +99,8 @@ export const Input = (className: string, props: Props) => (
 ### Extract
 
 第一引数と、第二引数で指定した物で互換性のある型を抽出する。
+オブジェクトはkeyを取得したら可能。
 これUnion型で必要なものだけ抽出できるから神じゃね？？
-ReduxのActionの型被ったときに使えそう。
 
 ```
 type Test = Extract<string | number, string>
@@ -130,3 +130,46 @@ type Test = Extract<string | 100, boolean>
 ```
 
 ### Exclude
+
+Extractの逆。第一引数と第二引数が合致しないものを返す。
+
+```
+union型で不要な物を除いた型を作成できたりする
+
+type Size = 'small' | 'normal' | 'large' | 'medium'
+
+第二引数をtypoすると除外されないので注意が必要。
+type BoxSize = Exclude<Size, 'small'>
+
+```
+
+### Record
+
+オブジェクトのkeyとvalueを指定できる。
+
+```
+type Page = {
+  url: string
+  authorized: boolean
+};
+
+type Params = 'login' | 'logout'
+
+type Pages = Record<Params, Page>
+
+const page :Pages = {
+  login: {
+    url: 'login',
+    authorized: false
+  },
+  logout: {
+    url: 'logout',
+    authorized: true
+  }
+}
+
+```
+
+### Parameters
+
+
